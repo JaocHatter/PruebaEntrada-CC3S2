@@ -2,7 +2,8 @@ import os
 
 # Esta funcion nos permite hallar el status de nuestra operacion
 # Y las estadisticas despues de 5 paquetes transmitidos
-
+# Esta funcion fue extraida de una libreria de python 
+# Link: https://github.com/enthought/Python-2.7.3/blob/master/Lib/commands.py
 def getstatusoutput(cmd):
     """Return (status, output) of executing cmd in a shell."""
     pipe = os.popen('{ ' + cmd + '; } 2>&1', 'r')
