@@ -1,3 +1,4 @@
+# Funcion para enviar email usando protocolo SMTP fue sacada de la página RealPython
 import smtplib
 from email.mime.text import MIMEText
 
