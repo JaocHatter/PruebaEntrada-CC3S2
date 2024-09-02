@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define forn(i,n) for(int i=0;i<n;i++)
 
 struct arista {
     int idxDestino;
@@ -28,7 +29,7 @@ class grafo {
         void insertarVertice(int);
         void insertarArista(int, int, int);
         void imprimirGrafo();
-        void dijkstra(int,int);
+        void dijkstra(int);
 };
 
 grafo::grafo() {
@@ -80,7 +81,7 @@ void grafo::insertarArista(int idx, int idy, int peso) {
     }
 }
 
-void grafo::dijkstra(int origen,int num) {
+void grafo::dijkstra(int origen) {
     vector<int> dist(1000, INT_MAX);
     vector<bool> visitado(1000, false);
     dist[origen] = 0;
@@ -108,27 +109,31 @@ void grafo::dijkstra(int origen,int num) {
 
 int main() {
     grafo g;
+    int n;
     cout<<"Nodo inicial: 0"<<endl;
     g.insertarVertice(0);
-    g.insertarVertice(1);
-    g.insertarVertice(2);
-    g.insertarVertice(3);
-    g.insertarVertice(4);
-    g.insertarVertice(5);
-
-    g.insertarArista(0, 1, 41);
-    g.insertarArista(0, 5, 29);
-    g.insertarArista(1, 2, 51);
-    g.insertarArista(1, 4, 32);
-    g.insertarArista(2, 3, 50);
-    g.insertarArista(3 , 0, 45);
-    g.insertarArista(3, 5, 38);
-    g.insertarArista(4, 2, 32);
-    g.insertarArista(4, 3, 36);
-    g.insertarArista(5, 1, 24);
-    g.insertarArista(5, 4, 21);
-
-    g.dijkstra(0,6);
+    cout<<"Cuantos Nodos mas deseas poner (sin incluir al nodo 0): ";
+    cin>>n;
+    forn(i,n){
+        cout<<"Nodo "<<i+1<<" insertado"<<endl;
+    }
+    cout<<"======================"<<endl;
+    cout<<"Cuantas aristas deseas agregar?: ";
+    int n_aristas;
+    cin>>n_aristas;
+    cout<<"======================"<<endl;
+    forn(i,n_aristas){
+        int p,h,w;
+        cout<<"Nodo padre: ";
+        cin>>p;
+        cout<<"Nodo hijo: ";
+        cin>>h;
+        cout<<"Peso de la arista: ";
+        cin>>w;
+        g.insertarArista(p, h, w);
+        cout<<"======================"<<endl;
+    }
+    g.dijkstra(0);
 
     return 0;
 }
